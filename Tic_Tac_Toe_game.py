@@ -2,9 +2,13 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 
+# global variables
+ActivePlayer = 1
+p1=[] #what player 1 selects
+p2=[]  #what player 2 selects
+
 root = Tk()
 
-root.title("Tic Tac Toe: Player 1 ")
 
 # Add Buttons
 
@@ -55,6 +59,51 @@ bu9.config(command=lambda: ButtonClick(9))
 
 
 def ButtonClick(id):
-    print("ID:{}".format(id))
+    global ActivePlayer
+    global p1
+    global p2
+
+    if (ActivePlayer==1):
+        SetLayout(id, "X")
+        p1.append(id)
+        root.title("Tic Tac Toe: Player 2 ")
+        ActivePlayer=2
+        print("P1:{}".format(p1))
+    elif (ActivePlayer==2):
+        SetLayout(id, "O")
+        p2.append(id)
+        root.title("Tic Tac Toe: Player 1 ")
+        ActivePlayer=1
+        print("P2:{}".format(p2))
+
+def SetLayout(id, PlayerSymbol):
+    if id==1:
+        bu1.config(text = PlayerSymbol)
+        bu1.state(['disabled'])
+    elif id==2:
+        bu2.config(text=PlayerSymbol)
+        bu2.state(['disabled'])
+    elif id==3:
+        bu3.config(text=PlayerSymbol)
+        bu3.state(['disabled'])
+    elif id == 4:
+        bu4.config(text=PlayerSymbol)
+        bu4.state(['disabled'])
+    elif id == 5:
+        bu5.config(text=PlayerSymbol)
+        bu5.state(['disabled'])
+    elif id == 6:
+        bu6.config(text=PlayerSymbol)
+        bu6.state(['disabled'])
+    elif id == 7:
+        bu7.config(text=PlayerSymbol)
+        bu7.state(['disabled'])
+    elif id == 8:
+        bu8.config(text=PlayerSymbol)
+        bu8.state(['disabled'])
+    elif id == 9:
+        bu9.config(text=PlayerSymbol)
+        bu9.state(['disabled'])
+
 
 root.mainloop()
