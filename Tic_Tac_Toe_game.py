@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+from random import randint
+
 
 # global variables
 ActivePlayer = 1
@@ -69,6 +71,7 @@ def ButtonClick(id):
         root.title("Tic Tac Toe: Player 2 ")
         ActivePlayer=2
         print("P1:{}".format(p1))
+        AutoPlay()
     elif (ActivePlayer==2):
         SetLayout(id, "O")
         p2.append(id)
@@ -145,6 +148,15 @@ def CheckWinner():
         messagebox.showinfo(title="Congrats", message="Player 1 is the winner")
     elif Winner==2:
         messagebox.showinfo(title="Congrats", message="Player 2 is the winner")
+
+def AutoPlay():
+    EmptyCells=[]
+    for cell in range(9):
+        if (not((cell+1 in p1) or (cell+1 in p2))):
+            EmptyCells.append(cell+1)
+    randIndex = randint(0,len(EmptyCells)-1)
+    ButtonClick(EmptyCells[randIndex])
+
 
 
 root.mainloop()
