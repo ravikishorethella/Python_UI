@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from DBconnect_DB import DBconnect
+from ListReservations import ListTickets
 
 dbConnect = DBconnect()
 root = Tk()
@@ -28,6 +29,10 @@ TextComments.grid(row=3, column=1,columnspan=2)
 ttk.Label(root, text="Comments:").grid(row=3, column=0)
 buButton = ttk.Button(root, text="Submit")
 buButton.grid(row=4, column=3)
+
+buList = ttk.Button(root, text="List Reservation.")
+buList.grid(row=4, column=2)
+
 def ButtonClick():
     print("Full Name: {}".format(EntryFullName.get()))
     print("Gender: {}".format(SpanGender.get()))
@@ -36,6 +41,13 @@ def ButtonClick():
     messagebox.showinfo(title="Add info", message=msg)
     EntryFullName.delete(0,'end')
     TextComments.delete(1.0, 'end')
+
+def ButtonList():
+    listTickets = ListTickets()
+
 buButton.config(command=ButtonClick)
+buList.config(command=ButtonList)
 
 root.mainloop()
+
+

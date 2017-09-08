@@ -16,10 +16,9 @@ class DBconnect:
         self._db.commit()
         return ("Record is added")
 
-    def ListAdmins(self):
+    def ListTickets(self):
         cursor = self._db.execute("select * from Ticket")
-        for row in cursor:
-            print("ID:{}, Name:{}, Gender:{}, Comment:{}".format(row["ID"], row["Name"],row["Gender"], row['Comment']))
+        return cursor
 
     def DeleteRecord(self,ID):
         self._db.row_factory = sqlite3.Row
